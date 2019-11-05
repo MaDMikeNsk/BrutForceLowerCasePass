@@ -10,7 +10,7 @@ def tuple_to_string(tup):
 
 
 def brut(password_length, correct_password):
-    print('Подождите, идёт подбор пароля...')
+    print(f'Подождите, идёт подбор пароля из {password_length} символов...')
     char_string = string.ascii_lowercase  # Пароль состоит из маленьких англ букв
     combination = it.product(char_string, repeat=password_length)  # Размещения с повторениями (iterator)
 
@@ -18,5 +18,8 @@ def brut(password_length, correct_password):
     for i in range(1, len(char_string) ** password_length + 1):
         temp_comb = next(combination)
         if tuple_to_string(temp_comb) == correct_password:
-            return f'Пароль "{tuple_to_string(temp_comb)}" найден за {i} итерации(й)'
-    return f'Пароль не найден, итераций {i}'
+            return print(f'Пароль "{tuple_to_string(temp_comb)}" найден за {i} итерации(й)')
+    return print(f'Пароль не найден, итераций {i}')
+
+
+brut(2, 'gh')
